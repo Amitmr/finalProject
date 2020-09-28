@@ -1,35 +1,4 @@
 <!doctype html>
-<?php
-   include("Login/config.php");
-   session_start();
-
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form
-
-      $myemail = mysqli_real_escape_string($db,$_POST['email']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']);
-      $myFname = mysqli_real_escape_string($db,$_POST['firstName']);
-      $myLname = mysqli_real_escape_string($db,$_POST['lastName']);
-      $fullName = $myFname + " " + $myLname;
-
-      $sql = "SELECT id FROM users WHERE Email = '$myemail' and Password = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-
-      $count = mysqli_num_rows($result);
-
-      // If result matched $myusername and $mypassword, table row must be 1 row
-
-      if($count == 1) {
-         // session_register("myusername");
-         $_SESSION['login_user'] = $fullName;
-         header("location:Main/main.php");
-      }else {
-         $error = "מייל או סיסמא לא נכונים";
-      }
-   }
-?>
 
 <html lang="he" dir="rtl">
 
@@ -48,7 +17,8 @@
 <body>
 <div class="login-wrap">
 	<div class="login-html">
-		<form class="login-form" action = "" method = "post">
+
+		<form class="login-form" action = "Login/Process.php" method = "post">
 				<div class="group">
 					<label class = "label">מייל</label>
 					<input type = "email" name = "email" class="input">
@@ -57,10 +27,26 @@
 					<label class = "label">סיסמא</label>
 					<input type = "password" name = "password"  class="input" data-type="password">
 				</div>
+        <?php
+          if(@$_GET['Empty']==true)
+          {
+          ?>
+          <div style = "font-size:15px; color:#cc0000; margin-top:10px" ><?php echo $_GET['Empty'] ?></div>
+          <?php
+          }
+          ?>
+          <?php
+          if(@$_GET['Invalid']==true)
+          {
+          ?>
+          <div style = "font-size:15px; color:#cc0000; margin-top:10px" ><?php echo $_GET['Invalid'] ?></div>
+          <?php
+          }
+          ?>
 				<div class="group">
-					<input type="submit" class="button hvr-float-shadow" value="כניסה">
+					<input type="submit" name="Login" class="button hvr-float-shadow" value="כניסה">
 				</div>
-        <div style = "font-size:15px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
+        <!-- <div style = "font-size:15px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div> -->
 			</form>
 		</div>
 	</div>
