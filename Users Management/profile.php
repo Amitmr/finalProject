@@ -11,7 +11,6 @@
 						$userID = $row[2];
         }
 ?>
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 
@@ -31,20 +30,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="css/main.css" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="../assets/demo/demo.css" rel="stylesheet" />
-
-
 </head>
 
 <body class="">
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
       <div class="logo">
         <a href="#" class= "logo-tim logo-normal">
           <img  src="img/logo.jpeg" >
@@ -87,7 +77,7 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="javascript:;">ניהול משתמשים</a>
+            <a class="navbar-brand" href="javascript:;">פרופיל אישי</a>
           </div>
 					<div class="collapse navbar-collapse justify-content-end">
 						<ul class="navbar-nav">
@@ -119,139 +109,79 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-8">
-              <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">עריכת משתמש</h4>
+            <div class="col-md-6" style="margin: 0 auto; float: none; margin-bottom: 10px; ">
+              <div class="card card-profile" >
+								<div class="card-avatar">
+                  <a href="javascript:;">
+                    <img class="img" src="img/img_avatar.png" />
+                  </a>
                 </div>
-
                 <div class="card-body">
                   <form>
                     <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                        </div>
-                      </div>
-					  	  <?php
-							$user_id = htmlspecialchars($_GET["id"]);  // Get from the url
-							if(empty($user_id)) {
-							    header("Location: main.php");
-							}
-							$servername = "localhost";
-							$username = "amitmr_user";
-							$password = "Aa123456";
-							$dbname = "amitmr_users";
+											  	  <?php
+													$user_id = htmlspecialchars($_GET["id"]);  // Get from the url
+													if(empty($user_id)) {
+													    header("Location: main.php");
+													}
+													$servername = "localhost";
+													$username = "amitmr_user";
+													$password = "Aa123456";
+													$dbname = "amitmr_users";
 
-							// Create connection
-							$conn = mysqli_connect($servername, $username, $password, $dbname);
-							$utf = $conn->query("SET NAMES 'utf8'");
+													// Create connection
+													$conn = mysqli_connect($servername, $username, $password, $dbname);
+													$utf = $conn->query("SET NAMES 'utf8'");
 
-							// Check connection
-							if (!$conn) {
-								die("Connection failed: " . mysqli_connect_error());
-							}
+													// Check connection
+													if (!$conn) {
+														die("Connection failed: " . mysqli_connect_error());
+													}
 
-							$sql = "SELECT password, firstName, lastName, Email, Phone, Role, city FROM users WHERE Id=$user_id";
-							$result = mysqli_query($conn, $sql);
+													$sql = "SELECT firstName, lastName, Email, Phone, Role, city FROM users WHERE Id=$user_id";
+													$result = mysqli_query($conn, $sql);
 
-							if (mysqli_num_rows($result) == 1) {
-								$row = mysqli_fetch_assoc($result);
-								$password = $row["password"];
-								$firstname = $row["firstName"];
-								$lastname = $row["lastName"];
-								$email = $row["Email"];
-								$phone = $row["Phone"];
-								$role = $row["Role"];
-								$city = $row["city"];
-							}
-							else {
-							    header("Location: main.php");
-							}
+													if (mysqli_num_rows($result) == 1) {
+														$row = mysqli_fetch_assoc($result);
+														$firstname = $row["firstName"];
+														$lastname = $row["lastName"];
+														$email = $row["Email"];
+														$phone = $row["Phone"];
+														$role = $row["Role"];
+														$city = $row["city"];
+													}
+													else {
+													    header("Location: ../Main/main.php");
+													}
 
-							mysqli_close($conn);
-						  ?>
+													mysqli_close($conn);
+												  ?>
                     </div>
                     <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">שם פרטי</label>
-                          <input name="firstname" type="text" class="form-control" value="<?php echo $firstname; ?>">
+													<h3 class="text-gray"><?php echo $role; ?></h3>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <div class="col-md-12">
                         <div class="form-group">
-                          <label class="bmd-label-floating">שם משפחה</label>
-                          <input name="lastname" type="text" class="form-control" value="<?php echo $lastname; ?>">
+													<h4 class="card-title"><?php echo $firstname . " " .  $lastname; ?></h4>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">מייל</label>
-                          <input name="email" type="text" class="form-control" value="<?php echo $email; ?>">
-                        </div>
+													<p class="card-description">מייל: <?php echo $email; ?></p>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">טלפון</label>
-                          <input name="phone" type="text" class="form-control" value="<?php echo $phone; ?>">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">תעודת זהות</label>
-                          <input name="user_id" type="text" class="form-control" value="<?php echo $user_id; ?>">
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">תפקיד</label>
-                          <input name="role" type="text" class="form-control" value="<?php echo $role; ?>">
-                        </div>
-                      </div>
-                    </div>
-					<div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">עיר מגורים</label>
-                          <input name="city" type="text" class="form-control" value="<?php echo $city; ?>">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">שינוי סיסמא</label>
-                          <input name="password" type="password" class="form-control" value="<?php echo $password; ?>">
-                        </div>
-                      </div>
-                    <div class="row">
                       <div class="col-md-12">
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-primary pull-right" onclick=<?php
-														$servername = "localhost";
-														$username = "amitmr_user";
-														$password = "Aa123456";
-														$dbname = "amitmr_users";
-
-														// Create connection
-														$conn = mysqli_connect($servername, $username, $password, $dbname);
-														$utf = $conn->query("SET NAMES 'utf8'");
-
-														// Check connection
-														if (!$conn) {
-															die("Connection failed: " . mysqli_connect_error());
-														}
-							              $sql = "UPDATE users SET password='". $_GET['password']. "', firstName='". $_GET['firstname']. "', lastName='". $_GET['lastname']. "', Email='". $_GET['email']. "', Phone='". $_GET['phone']. "', Role='". $_GET['role']. "', city='". $_GET['city']. "', Id='". $_GET['user_id']. "' WHERE Id='". $_GET['user_id']. "'";
-														$result = mysqli_query($conn, $sql);
-
-														mysqli_close($conn);
-													  ?>>שמור משתמש</button>
-                        </div>
+													<p class="card-description">טלפון: <?php echo $phone; ?></p>
                       </div>
-                    </div>
+                      <div class="col-md-12">
+													<p class="card-description">תעודת זהות: <?php echo $user_id; ?></p>
+                      </div>
+                      <div class="col-md-12">
+													<p class="card-description">עיר מגורים: <?php echo $city; ?></p>
+                      </div>
                     <div class="clearfix"></div>
                   </form>
                 </div>
@@ -267,7 +197,6 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
       <footer class="footer">
         <div class="container-fluid">

@@ -5,10 +5,11 @@
 
     if(isset($_SESSION['User']))
     {
-      $sql="SELECT firstName, lastName FROM users WHERE Email='".$_SESSION['User']."';";
+      $sql="SELECT firstName, lastName, Id FROM users WHERE Email='".$_SESSION['User']."';";
       $result= mysqli_query($conn, $sql);
         while($row = mysqli_fetch_row($result)){
             $name = $row[0] . " " . $row[1];
+						$userID = $row[2];
         }
 ?>
 
@@ -65,13 +66,13 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="../../../../../../../../Articles/articles page.php">
+            <a class="nav-link" href="../Articles/articles page.php">
               <i class="material-icons">content_paste</i>
               <p>כתבות</p>
             </a>
           </li>
          <li class="nav-item ">
-            <a class="nav-link" href="../../../../Events/events_page.php">
+            <a class="nav-link" href="../Events/events_page.php">
               <i class="material-icons">event</i>
               <p>אירועים</p>
             </a>
@@ -106,7 +107,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">פרופיל</a>
+                  <a class="dropdown-item" href="profile.php?id=<?php echo $userID ?>">פרופיל</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="..\Login\Logout.php?logout">להתנתק מהמערכת</a>
                 </div>
@@ -189,10 +190,10 @@
 									<button type="button" rel="tooltip" title="Edit Task" class="btn btn-primary btn-link btn-sm" onclick="location.href='edit.php?id=<?php echo $row["Id"]; ?>';">
 										<i class="material-icons">edit</i>
 									</button>
-                                  <button type="button" rel="tooltip" title="מחיקה" class="btn btn-danger btn-link btn-sm">
-                                      <i class="material-icons"> <a class="red" href='delete user.php?id=<?php echo $row["Id"]; ?>' </a> close</i>
-                                 </button>
-                                </td>
+                  <button type="button" rel="tooltip" title="מחיקה" class="btn btn-danger btn-link btn-sm">
+                    <i class="material-icons"> <a class="red" href='delete user.php?id=<?php echo $row["Id"]; ?>' </a> close</i>
+                  </button>
+                  </td>
 
 							<?php
 								 echo "</tr>" ;

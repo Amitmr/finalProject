@@ -17187,7 +17187,7 @@ html[dir="rtl"] .card.card-chart {
 
 html[dir="rtl"] .card.card-chart .card-title,
 html[dir="rtl"] .card.card-chart .card-category {
-  text-align: right;
+  text-align: center;
 }
 
 html[dir="rtl"] .card .card-body,
@@ -18128,8 +18128,8 @@ html[dir="rtl"] .form-check .form-check-sign .check:before {
 }
 
 .card-profile .card-avatar {
-  max-width: 130px;
-  max-height: 130px;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .card-plain {

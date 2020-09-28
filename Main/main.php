@@ -1,17 +1,16 @@
-
 <?php
-	include_once 'connect.php';
+	include_once '../Main/connect.php';
   session_start();
 
     if(isset($_SESSION['User']))
     {
-      $sql="SELECT firstName, lastName FROM users WHERE Email='".$_SESSION['User']."';";
+      $sql="SELECT firstName, lastName, Id FROM users WHERE Email='".$_SESSION['User']."';";
       $result= mysqli_query($conn, $sql);
         while($row = mysqli_fetch_row($result)){
             $name = $row[0] . " " . $row[1];
+						$userID = $row[2];
         }
 ?>
-
 
 <!doctype html>
 <html lang="he" dir="rtl">
@@ -101,7 +100,7 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">פרופיל</a>
+                  <a class="dropdown-item" href="../Users Management/profile.php?id=<?php echo $userID ?>">פרופיל</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="..\Login\Logout.php?logout">להתנתק מהמערכת</a>
                 </div>
