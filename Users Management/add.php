@@ -1,3 +1,17 @@
+
+<?php
+	include_once '../Main/connect.php';
+  session_start();
+
+    if(isset($_SESSION['User']))
+    {
+      $sql="SELECT firstName, lastName FROM users WHERE Email='".$_SESSION['User']."';";
+      $result= mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_row($result)){
+            $name = $row[0] . " " . $row[1];
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 
@@ -9,7 +23,7 @@
   <title>
   ניהול משתמשים
   </title>
-  
+
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -19,8 +33,8 @@
   <link href="css/main.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  
-  
+
+
 </head>
 
 <body class="">
@@ -36,7 +50,7 @@
 	        <div class="sidebar-wrapper">
 
         <ul class="nav">
-            
+
          <li class="nav-item  ">
             <a class="nav-link" href="../Main/main.php">
               <i class="material-icons">dashboard</i>
@@ -60,8 +74,7 @@
               <i class="material-icons">event</i>
               <p>אירועים</p>
             </a>
-          </li>          
-          
+          </li>
         </ul>
       </div>
     </div>
@@ -72,7 +85,32 @@
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="javascript:;">ניהול משתמשים</a>
           </div>
-         
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              <li>
+                <div class="navbar-wrapper">
+                  <a class="navbar-brand">שלום, <?php  echo $name .'<br/>'; }
+                  else
+                      {
+                          header("location:../index.php");
+                      }?></a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">person</i>
+                  <p class="d-lg-none d-md-block">
+                    Account
+                  </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownProfile">
+                  <a class="dropdown-item" href="#">פרופיל</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="..\Login\Logout.php?logout">להתנתק מהמערכת</a>
+                </div>
+              </li>
+            </ul>
+          </div>
       </nav>
       <!-- End Navbar -->
       <div class="content">
@@ -158,16 +196,16 @@
 							// Create connection
 							$conn = mysqli_connect($servername, $username, $password, $dbname);
 							$utf = $conn->query("SET NAMES 'utf8'");
-							
+
 							// Check connection
 							if (!$conn) {
 								die("Connection failed: " . mysqli_connect_error());
 							}
-							
-                            $sql = "INSERT INTO users (password, firstName, lastName, Email, Phone, Role, city, Id) 
+
+                            $sql = "INSERT INTO users (password, firstName, lastName, Email, Phone, Role, city, Id)
                             VALUES ('" . $_GET['password']. "', '" . $_GET['firstname']. "', '" . $_GET['lastname']. "', '" . $_GET['email']. "', '" . $_GET['phone']. "', '" . $_GET['role']. "', '" . $_GET['city']. "', '" . $_GET['user_id']. "')";
 							$result = mysqli_query($conn, $sql);
-							
+
 							mysqli_close($conn);
 						  ?>>שמור משתמש</button>
                         </div>
@@ -184,7 +222,7 @@
                   <a href="javascript:;">
                   </a>
                 </div>
-      
+
               </div>
             </div>
           </div>

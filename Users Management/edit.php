@@ -1,16 +1,16 @@
+<?php
+	include_once '../Main/connect.php';
+  session_start();
 
+    if(isset($_SESSION['User']))
+    {
+      $sql="SELECT firstName, lastName FROM users WHERE Email='".$_SESSION['User']."';";
+      $result= mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_row($result)){
+            $name = $row[0] . " " . $row[1];
+        }
+?>
 
-<!--
-=========================================================
-Material Dashboard - v2.1.2
-=========================================================
-
-Product Page: https://www.creative-tim.com/product/material-dashboard
-Copyright 2020 Creative Tim (https://www.creative-tim.com)
-Coded by Creative Tim
-
-=========================================================
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 
@@ -22,7 +22,7 @@ The above copyright notice and this permission notice shall be included in all c
   <title>
   ניהול משתמשים
   </title>
-  
+
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -32,8 +32,8 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="css/main.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
-  
-  
+
+
 </head>
 
 <body class="">
@@ -76,8 +76,8 @@ The above copyright notice and this permission notice shall be included in all c
               <i class="material-icons">event</i>
               <p>אירועים</p>
             </a>
-          </li>         
-          
+          </li>
+
         </ul>
       </div>
     </div>
@@ -88,7 +88,32 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="javascript:;">ניהול משתמשים</a>
           </div>
-         
+					<div class="collapse navbar-collapse justify-content-end">
+						<ul class="navbar-nav">
+							<li>
+								<div class="navbar-wrapper">
+									<a class="navbar-brand">שלום, <?php  echo $name .'<br/>'; }
+									else
+											{
+													header("location:../index.php");
+											}?></a>
+								</div>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="material-icons">person</i>
+									<p class="d-lg-none d-md-block">
+										Account
+									</p>
+								</a>
+								<div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownProfile">
+									<a class="dropdown-item" href="#">פרופיל</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="..\Login\Logout.php?logout">להתנתק מהמערכת</a>
+								</div>
+							</li>
+						</ul>
+					</div>
       </nav>
       <!-- End Navbar -->
       <div class="content">
@@ -99,6 +124,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="card-header card-header-primary">
                   <h4 class="card-title">עריכת משתמש</h4>
                 </div>
+
                 <div class="card-body">
                   <form>
                     <div class="row">
@@ -119,7 +145,7 @@ The above copyright notice and this permission notice shall be included in all c
 							// Create connection
 							$conn = mysqli_connect($servername, $username, $password, $dbname);
 							$utf = $conn->query("SET NAMES 'utf8'");
-							
+
 							// Check connection
 							if (!$conn) {
 								die("Connection failed: " . mysqli_connect_error());
@@ -127,7 +153,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 							$sql = "SELECT password, firstName, lastName, Email, Phone, Role, city FROM users WHERE Id=$user_id";
 							$result = mysqli_query($conn, $sql);
-															 
+
 							if (mysqli_num_rows($result) == 1) {
 								$row = mysqli_fetch_assoc($result);
 								$password = $row["password"];
@@ -141,7 +167,7 @@ The above copyright notice and this permission notice shall be included in all c
 							else {
 							    header("Location: main.php");
 							}
-							
+
 							mysqli_close($conn);
 						  ?>
                     </div>
@@ -204,24 +230,24 @@ The above copyright notice and this permission notice shall be included in all c
                       <div class="col-md-12">
                         <div class="form-group">
                           <button type="submit" class="btn btn-primary pull-right" onclick=<?php
-							$servername = "localhost";
-							$username = "amitmr_user";
-							$password = "Aa123456";
-							$dbname = "amitmr_users";
+														$servername = "localhost";
+														$username = "amitmr_user";
+														$password = "Aa123456";
+														$dbname = "amitmr_users";
 
-							// Create connection
-							$conn = mysqli_connect($servername, $username, $password, $dbname);
-							$utf = $conn->query("SET NAMES 'utf8'");
-							
-							// Check connection
-							if (!$conn) {
-								die("Connection failed: " . mysqli_connect_error());
-							}
-                            $sql = "UPDATE users SET password='". $_GET['password']. "', firstName='". $_GET['firstname']. "', lastName='". $_GET['lastname']. "', Email='". $_GET['email']. "', Phone='". $_GET['phone']. "', Role='". $_GET['role']. "', city='". $_GET['city']. "', Id='". $_GET['user_id']. "' WHERE Id='". $_GET['user_id']. "'";
-							$result = mysqli_query($conn, $sql);
-							
-							mysqli_close($conn);
-						  ?>>שמור משתמש</button>
+														// Create connection
+														$conn = mysqli_connect($servername, $username, $password, $dbname);
+														$utf = $conn->query("SET NAMES 'utf8'");
+
+														// Check connection
+														if (!$conn) {
+															die("Connection failed: " . mysqli_connect_error());
+														}
+							              $sql = "UPDATE users SET password='". $_GET['password']. "', firstName='". $_GET['firstname']. "', lastName='". $_GET['lastname']. "', Email='". $_GET['email']. "', Phone='". $_GET['phone']. "', Role='". $_GET['role']. "', city='". $_GET['city']. "', Id='". $_GET['user_id']. "' WHERE Id='". $_GET['user_id']. "'";
+														$result = mysqli_query($conn, $sql);
+
+														mysqli_close($conn);
+													  ?>>שמור משתמש</button>
                         </div>
                       </div>
                     </div>
@@ -236,7 +262,7 @@ The above copyright notice and this permission notice shall be included in all c
                   <a href="javascript:;">
                   </a>
                 </div>
-      
+
               </div>
             </div>
           </div>

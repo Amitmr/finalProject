@@ -1,4 +1,17 @@
 
+<?php
+	include_once '../Main/connect.php';
+  session_start();
+
+    if(isset($_SESSION['User']))
+    {
+      $sql="SELECT firstName, lastName FROM users WHERE Email='".$_SESSION['User']."';";
+      $result= mysqli_query($conn, $sql);
+        while($row = mysqli_fetch_row($result)){
+            $name = $row[0] . " " . $row[1];
+        }
+?>
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 
@@ -29,7 +42,7 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
 
-     
+
       <div class="logo">
         <a href="#" class= "logo-tim logo-normal">
           <img  src="img/logo.jpeg" >
@@ -62,7 +75,7 @@
               <i class="material-icons">event</i>
               <p>אירועים</p>
             </a>
-          </li>          
+          </li>
 
         </ul>
       </div>
@@ -74,14 +87,17 @@
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="javascript:;">ניהול משתמשים</a>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
+              <li>
+                <div class="navbar-wrapper">
+                  <a class="navbar-brand">שלום, <?php  echo $name .'<br/>'; }
+                  else
+                      {
+                          header("location:../index.php");
+                      }?></a>
+                </div>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">person</i>
@@ -90,13 +106,11 @@
                   </p>
                 </a>
                 <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdownProfile">
-                  <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Settings</a>
+                  <a class="dropdown-item" href="#">פרופיל</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="..\Login\Logout.php?logout">להתנתק מהמערכת</a>
                 </div>
               </li>
-              <!-- your navbar here -->
             </ul>
           </div>
         </div>

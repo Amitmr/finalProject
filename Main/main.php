@@ -7,7 +7,6 @@
     {
       $sql="SELECT firstName, lastName FROM users WHERE Email='".$_SESSION['User']."';";
       $result= mysqli_query($conn, $sql);
-
         while($row = mysqli_fetch_row($result)){
             $name = $row[0] . " " . $row[1];
         }
@@ -29,7 +28,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <!-- Material Kit CSS -->
-  <link href="main.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
   <!--   Core JS Files   -->
   <script src="js/jquery.min.js" type="text/javascript"></script>
   <script src="js/popper.min.js" type="text/javascript"></script>
