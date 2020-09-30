@@ -109,12 +109,30 @@
         </div>
       </nav>
       <!-- End Navbar -->
+
       <div class="content">
         <div class="container-fluid">
-
-
           <div>
-            <?php
+						<?php
+									if(isset($_GET['err']))
+									{
+											echo '<div class="alert alert-warning">
+																 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+																		 <i class="material-icons">close</i>
+																	</button>
+																	<span> אירועים כפולים נמחקו </span>
+															 </div>';
+									}
+									if(isset($_GET['ok']))
+									{
+										echo '<div class="alert alert-success">
+														<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+																<i class="material-icons">close</i>
+																</button>
+																<span>התווספו אירועים חדשים למערכת</span>
+													</div>';
+									}
+
                 require "../DB/events.php";
                 $objectEvent = new Event();
                 $events = $objectEvent->getAllEvents();

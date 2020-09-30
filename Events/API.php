@@ -29,18 +29,30 @@
   }
 
   $i = 0;
+  $doubleFlag = 0;
   foreach ($event_array as $event) {
-
+    include_once "../DB/events.php";
     $date = date('Y-m-d H:i:s', strtotime($event['hour']));
 
-    include_once "../DB/events.php";
     $objectEvent = new Event();
     $objectEvent->setType($event['type']);
     $objectEvent->setDate($date);
     $objectEvent->setPlayers($event['players']);
-    $objectEvent->addFromAPI();
+
+    if($objectEvent->checkIfEventExists()){
+        $doubleFlag++;
+    }
+    else{
+      $objectEvent->addFromAPI();
+    }
+
   }
 
-    header("Location: events_page.php");
+  if($doubleFlag > 0){
+    header("Location: events_page.php?err=1");
+  }
+  else{header("Location: events_page.php?ok=1");}
+
+
 
  ?>

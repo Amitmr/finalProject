@@ -128,6 +128,21 @@
       return $users;
     }
 
+    public function checkIfEventExists(){
+        $stmt = $this->dbConn->prepare("SELECT *  FROM events WHERE (`type` = :type) AND (`date` = :date) AND (`players` = :players)");
+
+        $stmt->bindParam(':type', $this->type);
+        $stmt->bindParam(':date', $this->date);
+        $stmt->bindParam(':players', $this->players);
+        $stmt->execute();
+        $result = $stmt->fetch();
+
+        if($result){
+          return true;
+        }else{
+          return false;
+        }
+    }
   }
 
  ?>
