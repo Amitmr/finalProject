@@ -249,7 +249,8 @@
     </div>
   </div>
   <script>
-    CKEDITOR.replace('content');
+    CKEDITOR.replace('content', {
+      language: 'he'});
    </script>
 
 </body>
