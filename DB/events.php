@@ -115,7 +115,7 @@
     }
 
     public function getAllEvents(){
-      $stmt = $this->dbConn->prepare("SELECT * FROM events");
+      $stmt = $this->dbConn->prepare("SELECT * FROM events ORDER BY date");
       $stmt->execute();
       $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
       return $events;
