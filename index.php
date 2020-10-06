@@ -17,7 +17,6 @@
 <body>
 <div class="login-wrap">
 	<div class="login-html">
-
 		<form class="login-form" action = "Login/Process.php" method = "post">
 				<div class="group">
 					<label class = "label">מייל</label>

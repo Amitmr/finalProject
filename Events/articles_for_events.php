@@ -122,6 +122,7 @@
                 require "../DB/articles.php";
                 $objectArticle = new Articles();
                 $articles = $objectArticle->getAllArticles();
+								$users = $objectArticle->getAllUsers();
 
                 require "../DB/events.php";
                 $objectEvent = new Event();
@@ -174,6 +175,7 @@
                          <tbody>
                            <?php
                              foreach ($articles as $key => $article) {
+															 $editor = $reporter = NULL;
                                $oDate = new DateTime($article['createdOn']);
                                $current_date = new DateTime();
                                if($oDate > $current_date->modify('-1 day')){
@@ -184,8 +186,21 @@
                                  <input type="hidden" name="article" id="article" value="<?php echo isset($article['id']) ? $article['id'] : ''; ?>">
                                  <td style="width:10%;"><input type="submit" value="הקצאת כתבה" class="btn btn-primary pull-right" id="save" name="save"></td>
                                  <td><?php echo $article['title']; ?></td>
-                                 <td><?php echo $article['writer']; ?></td>
-                                 <td><?php echo $article['editor']; ?></td>
+                                 <td><?php
+																				foreach ($users as $user) {
+			                                    if($user['Id'] == $article['writer']){
+			                                      $reporter = $user['firstName'] . " " .$user['lastName'];
+																						echo $reporter;
+			                                    }
+																				}
+																		 ?></td>
+                                 <td><?php  foreach ($users as $user) {
+																 						if($user['Id'] == $article['editor']) {
+																							$editor = $user['firstName'] . " " .$user['lastName'];
+																							echo $editor;
+																						}
+																					}
+																	?></td>
                                  <td><?php
                                        $oDate = new DateTime($article['createdOn']);
                                        echo $sDate = $oDate->format("d-m-Y H:i");?></td>

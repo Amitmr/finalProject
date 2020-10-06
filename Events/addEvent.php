@@ -257,7 +257,6 @@
                           </select>
                         </div>
                       </div>
-
                       <div class="col-md-12">
                         <div class="form-group">
                           <input type="submit" value="הוסף אירוע" class="btn btn-primary pull-right" id="save" name="save">

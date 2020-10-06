@@ -231,19 +231,6 @@
                       <div class="col-md-12">
                         <div class="form-group">
                           <button type="submit" class="btn btn-primary pull-right" onclick=<?php
-														$servername = "localhost";
-														$username = "amitmr_user";
-														$password = "Aa123456";
-														$dbname = "amitmr_users";
-
-														// Create connection
-														$conn = mysqli_connect($servername, $username, $password, $dbname);
-														$utf = $conn->query("SET NAMES 'utf8'");
-
-														// Check connection
-														if (!$conn) {
-															die("Connection failed: " . mysqli_connect_error());
-														}
 							              $sql = "UPDATE users SET password='". $_GET['password']. "', firstName='". $_GET['firstname']. "', lastName='". $_GET['lastname']. "', Email='". $_GET['email']. "', Phone='". $_GET['phone']. "', Role='". $_GET['role']. "', city='". $_GET['city']. "', Id='". $_GET['user_id']. "' WHERE Id='". $_GET['user_id']. "'";
 														$result = mysqli_query($conn, $sql);
 

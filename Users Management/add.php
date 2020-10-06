@@ -58,19 +58,19 @@
             </a>
           </li>
           <li class="nav-item active ">
-            <a class="nav-link" href="../Users Management/main.php">
+            <a class="nav-link" href="main.php">
               <i class="material-icons">person</i>
               <p>ניהול משתמשים</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="../../../../../../../../Articles/articles page.php">
+            <a class="nav-link" href="../Articles/articles page.php">
               <i class="material-icons">content_paste</i>
               <p>כתבות</p>
             </a>
           </li>
          <li class="nav-item ">
-            <a class="nav-link" href="../../../../Events/events_page.php">
+            <a class="nav-link" href="../Events/events_page.php">
               <i class="material-icons">event</i>
               <p>אירועים</p>
             </a>
@@ -112,105 +112,118 @@
             </ul>
           </div>
       </nav>
+
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-8">
               <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">הוספת משתמש</h4>
-                </div>
-                <div class="card-body">
-                  <form>
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group">
-                        </div>
-                      </div>
-					  	                      </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">שם פרטי</label>
-                          <input name="firstname" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">שם משפחה</label>
-                          <input name="lastname" type="text" class="form-control">
-                        </div>
-                      </div>
+                <form method="post">
+                    <div class="card-header card-header-primary">
+                      <h4 class="card-title">הוספת משתמש</h4>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">מייל</label>
-                          <input name="email" type="text" class="form-control">
+                    <div class="card-body">
+                      <form>
+                        <div class="row">
+                          <div class="col-md-5">
+                            <div class="form-group">
+                            </div>
+                          </div>
+    				    				</div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">שם פרטי</label>
+                              <input name="firstname" type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">שם משפחה</label>
+                              <input name="lastname" type="text" class="form-control">
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">טלפון</label>
-                          <input name="phone" type="text" class="form-control">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">מייל</label>
+                              <input name="email" type="text" class="form-control">
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">תעודת זהות</label>
-                          <input name="user_id" type="text" class="form-control">
+                        <div class="row">
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">טלפון</label>
+                              <input name="phone" type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">תעודת זהות</label>
+                              <input name="user_id" type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">תפקיד</label>
+                              <input name="role" type="text" class="form-control">
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">תפקיד</label>
-                          <input name="role" type="text" class="form-control">
+    										<div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">עיר מגורים</label>
+                              <input name="city" type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="bmd-label-floating">שינוי סיסמא</label>
+                              <input name="password" type="password" class="form-control">
+                            </div>
+                          </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <button type="submit" name="save" class="btn btn-primary pull-right">שמור משתמש</button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-					<div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">עיר מגורים</label>
-                          <input name="city" type="text" class="form-control">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">שינוי סיסמא</label>
-                          <input name="password" type="password" class="form-control">
-                        </div>
-                      </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <button type="submit" class="btn btn-primary pull-right" onclick=<?php
-							$servername = "localhost";
-							$username = "amitmr_user";
-							$password = "Aa123456";
-							$dbname = "amitmr_users";
+                    </form>
+                          <?php
+				                		if(isset($_POST['save'])){
+				                			require_once('../DB/DbConnect.php');
+				                            $db = new DbConnect();
+				                            $dbConn = $db->connect();
 
-							// Create connection
-							$conn = mysqli_connect($servername, $username, $password, $dbname);
-							$utf = $conn->query("SET NAMES 'utf8'");
+				                            $sql = "INSERT INTO `users`(`password`, `firstName`, `lastName`, `Email`, `Phone`, `Role`, `city`,`Id`) VALUES (:password,:firstName,:lastName,:Email,:Phone,:Role,:city,:Id)";
+				                            $stmt = $dbConn->prepare($sql);
 
-							// Check connection
-							if (!$conn) {
-								die("Connection failed: " . mysqli_connect_error());
-							}
+				                            $stmt->bindParam(':password', $_POST['password']);
+				                            $stmt->bindParam(':firstName', $_POST['firstname']);
+				                            $stmt->bindParam(':lastName', $_POST['lastname']);
+				                            $stmt->bindParam(':Email', $_POST['email']);
+				                            $stmt->bindParam(':Phone', $_POST['phone']);
+				                            $stmt->bindParam(':Role', $_POST['role']);
+				                            $stmt->bindParam(':city', $_POST['city']);
+				                            $stmt->bindParam(':Id', $_POST['user_id']);
 
-                            $sql = "INSERT INTO users (password, firstName, lastName, Email, Phone, Role, city, Id)
-                            VALUES ('" . $_GET['password']. "', '" . $_GET['firstname']. "', '" . $_GET['lastname']. "', '" . $_GET['email']. "', '" . $_GET['phone']. "', '" . $_GET['role']. "', '" . $_GET['city']. "', '" . $_GET['user_id']. "')";
-							$result = mysqli_query($conn, $sql);
-
-							mysqli_close($conn);
-						  ?>>שמור משתמש</button>
-                        </div>
-                      </div>
-                    </div>
+				                                if($stmt->execute()){
+				                                  header("Location: main.php");
+				                                }else{
+				                                  echo '<div class="alert alert-warning">
+				                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				                                                <i class="material-icons">close</i>
+				                                                </button>
+				                                                <span>שגיאה! המשתמש לא נשמר</span>
+				                                        </div>';
+				                                }
+				                		}
+                		?>
                     <div class="clearfix"></div>
                   </form>
                 </div>
@@ -250,286 +263,5 @@
       </footer>
     </div>
   </div>
-  <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-
-      <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Filters</li>
-        <li class="adjustments-line">
-          <a href="javascript:void(0)" class="switch-trigger active-color">
-            <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-purple" data-color="purple"></span>
-              <span class="badge filter badge-azure" data-color="azure"></span>
-              <span class="badge filter badge-green" data-color="green"></span>
-              <span class="badge filter badge-warning" data-color="orange"></span>
-              <span class="badge filter badge-danger" data-color="danger"></span>
-              <span class="badge filter badge-rose active" data-color="rose"></span>
-            </div>
-            <div class="clearfix"></div>
-          </a>
-        </li>
-        <li class="header-title">Images</li>
-        <li class="active">
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../assets/img/sidebar-1.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../assets/img/sidebar-2.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../assets/img/sidebar-3.jpg" alt="">
-          </a>
-        </li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="../assets/img/sidebar-4.jpg" alt="">
-          </a>
-        </li>
-        <li class="button-container">
-          <a href="https://www.creative-tim.com/product/material-dashboard" target="_blank" class="btn btn-primary btn-block">Free Download</a>
-        </li>
-        <!-- <li class="header-title">Want more components?</li>
-            <li class="button-container">
-                <a href="https://www.creative-tim.com/product/material-dashboard-pro" target="_blank" class="btn btn-warning btn-block">
-                  Get the pro version
-                </a>
-            </li> -->
-        <li class="button-container">
-          <a href="https://demos.creative-tim.com/material-dashboard/docs/2.1/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-            View Documentation
-          </a>
-        </li>
-        <li class="button-container github-star">
-          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!-- Plugin for the momentJs  -->
-  <script src="../assets/js/plugins/moment.min.js"></script>
-  <!--  Plugin for Sweet Alert -->
-  <script src="../assets/js/plugins/sweetalert2.js"></script>
-  <!-- Forms Validations Plugin -->
-  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
-  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
-  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
-  <script src="../assets/js/plugins/jquery.dataTables.min.js"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="../assets/js/plugins/bootstrap-tagsinput.js"></script>
-  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="../assets/js/plugins/jasny-bootstrap.min.js"></script>
-  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
-  <script src="../assets/js/plugins/fullcalendar.min.js"></script>
-  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
-  <script src="../assets/js/plugins/jquery-jvectormap.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js"></script>
-  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-  <!-- Library for adding dinamically elements -->
-  <script src="../assets/js/plugins/arrive.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chartist JS -->
-  <script src="../assets/js/plugins/chartist.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
-  <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
-  <script>
-    $(document).ready(function() {
-      $().ready(function() {
-        $sidebar = $('.sidebar');
-
-        $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-        $full_page = $('.full-page');
-
-        $sidebar_responsive = $('body > .navbar-collapse');
-
-        window_width = $(window).width();
-
-        fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-        if (window_width > 767 && fixed_plugin_open == 'Dashboard') {
-          if ($('.fixed-plugin .dropdown').hasClass('show-dropdown')) {
-            $('.fixed-plugin .dropdown').addClass('open');
-          }
-
-        }
-
-        $('.fixed-plugin a').click(function(event) {
-          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
-            }
-          }
-        });
-
-        $('.fixed-plugin .active-color span').click(function() {
-          $full_page_background = $('.full-page-background');
-
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-
-          var new_color = $(this).data('color');
-
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-color', new_color);
-          }
-
-          if ($full_page.length != 0) {
-            $full_page.attr('filter-color', new_color);
-          }
-
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.attr('data-color', new_color);
-          }
-        });
-
-        $('.fixed-plugin .background-color .badge').click(function() {
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-
-          var new_color = $(this).data('background-color');
-
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-background-color', new_color);
-          }
-        });
-
-        $('.fixed-plugin .img-holder').click(function() {
-          $full_page_background = $('.full-page-background');
-
-          $(this).parent('li').siblings().removeClass('active');
-          $(this).parent('li').addClass('active');
-
-
-          var new_image = $(this).find("img").attr('src');
-
-          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            $sidebar_img_container.fadeOut('fast', function() {
-              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-              $sidebar_img_container.fadeIn('fast');
-            });
-          }
-
-          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-            $full_page_background.fadeOut('fast', function() {
-              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-              $full_page_background.fadeIn('fast');
-            });
-          }
-
-          if ($('.switch-sidebar-image input:checked').length == 0) {
-            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-          }
-
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-          }
-        });
-
-        $('.switch-sidebar-image input').change(function() {
-          $full_page_background = $('.full-page-background');
-
-          $input = $(this);
-
-          if ($input.is(':checked')) {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar_img_container.fadeIn('fast');
-              $sidebar.attr('data-image', '#');
-            }
-
-            if ($full_page_background.length != 0) {
-              $full_page_background.fadeIn('fast');
-              $full_page.attr('data-image', '#');
-            }
-
-            background_image = true;
-          } else {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar.removeAttr('data-image');
-              $sidebar_img_container.fadeOut('fast');
-            }
-
-            if ($full_page_background.length != 0) {
-              $full_page.removeAttr('data-image', '#');
-              $full_page_background.fadeOut('fast');
-            }
-
-            background_image = false;
-          }
-        });
-
-        $('.switch-sidebar-mini input').change(function() {
-          $body = $('body');
-
-          $input = $(this);
-
-          if (md.misc.sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            md.misc.sidebar_mini_active = false;
-
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-          } else {
-
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-            setTimeout(function() {
-              $('body').addClass('sidebar-mini');
-
-              md.misc.sidebar_mini_active = true;
-            }, 300);
-          }
-
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
-
-          // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
-
-        });
-      });
-    });
-  </script>
-</body>
 
 </html>

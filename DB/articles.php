@@ -28,8 +28,6 @@
     function getCreatedOn() {return $this->createdOn;}
     function setChanged($changed) {$this->changed = $changed;}
     function getChanged() {return $this->changed;}
-    // function setReadyStatus($readyStatus) {$this->readyStatus = $readyStatus;}
-    // function getReadyStatus() {return $this->readyStatus;}
 
     public function __construct(){
         require_once('DbConnect.php');
@@ -48,7 +46,6 @@
         $stmt->bindParam(':editor', $this->editor);
         $stmt->bindParam(':cdate', $this->createdOn);
         $stmt->bindParam(':gdate', $this->createdOn);
-        // $stmt->bindParam(':ready', $this->readyStatus);
 
         if($stmt->execute()){
           return true;
